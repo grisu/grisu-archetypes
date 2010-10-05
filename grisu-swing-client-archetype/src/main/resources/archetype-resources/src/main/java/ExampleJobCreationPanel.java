@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import org.jdesktop.swingx.JXErrorPane;
 import org.jdesktop.swingx.error.ErrorInfo;
 import org.vpac.grisu.control.ServiceInterface;
+import org.vpac.grisu.frontend.control.jobMonitoring.RunningJobManager;
 import org.vpac.grisu.frontend.model.job.JobObject;
 import org.vpac.grisu.frontend.view.swing.jobcreation.JobCreationPanel;
 import org.vpac.grisu.frontend.view.swing.jobcreation.widgets.SubmissionLogPanel;
@@ -39,6 +40,8 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 	 * Create the panel.
 	 */
 	public ExampleJobCreationPanel() {
+		// I'm using jgoodies form layout,
+		// of course you can use any other layout manager of your choice
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
@@ -96,7 +99,7 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 		return "Example";
 	}
 
-	// creating the log panel
+	// creating a submission log panel
 	private SubmissionLogPanel getSubmissionLogPanel() {
 		if (submissionLogPanel == null) {
 			submissionLogPanel = new SubmissionLogPanel();
@@ -171,13 +174,24 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 					// faster, because otherwise Grisu has to figure out which
 					// application package the executable you are using belongs
 					// to...
-					job.setApplication("UnixCommands");
+					// job.setApplication("UnixCommands");
 
-					// this will only work if you are in the BeSTGRID VO.
-					// job.createJob("/ARCS/BeSTGRID");
-					// this uses the default (or last-used) VO. Better to ask
-					// the user, though. Or hardcode, if there is only one VO...
-					job.createJob();
+					// now we need to create the job on the backend. In order to
+					// do this we need to
+					// specify which group/vo we want to use.
+					// you can either hardcode that (if the project the client
+					// is for only has 1 VO anyway),
+					// you can ask the user, or you can specify null in which
+					// case the default/last used VO is used
+					// there are 2 ways to create the job, either:
+					// job.createJob() / job.createJob("/ARCS/BeSTGRID")
+					// or, what is recommended if you use the provided swing
+					// client library (as we do here):
+					RunningJobManager.getDefault(si).createJob(job,
+							"/ARCS/BeSTGRID");
+					// this integrates better with the job management panel we
+					// are using
+
 					// last not least, we stage in files and submit the job
 					job.submitJob();
 
@@ -189,7 +203,8 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 
 					JXErrorPane pane = new JXErrorPane();
 					pane.setErrorInfo(info);
-					// the following line can be used to show a button to submit
+					// the following line could be used to show a button to
+					// submit
 					// a bug/ticket to a bug tracking system
 					// pane.setErrorReporter(new GrisuErrorReporter());
 
