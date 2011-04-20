@@ -11,50 +11,48 @@
 
 	<repositories>
 		<repository>
-			<id>ARCS</id>
-			<url>http://code.arcs.org.au/nexus/content/groups/public</url>
+			<id>bestgrid.public.release</id>
+			<url>http://dev.ceres.auckland.ac.nz/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
 		</repository>
 		<repository>
-			<id>ARCS Snapshots</id>
-			<url>http://code.arcs.org.au/nexus/content/groups/public-snapshots
+			<id>bestgrid.public.snapshot</id>
+			<url>http://dev.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/
 			</url>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
 		</repository>
 	</repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>ARCS plugin</id>
-			<url>http://code.arcs.org.au/nexus/content/groups/public</url>
-			<layout>default</layout>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>ARCS plugin Snapshots</id>
-			<url>http://code.arcs.org.au/nexus/content/groups/public-snapshots
-			</url>
-			<layout>default</layout>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<distributionManagement>
 		<repository>
-			<id>arcs.release</id>
-			<name>ARCS Release Repository</name>
-			<url>http://code.arcs.org.au/nexus/content/repositories/releases
+			<name>BeSTGRID Releases Repository</name>
+			<id>bestgrid.release2</id>
+			<url>http://er77.ceres.auckland.ac.nz/nexus/content/repositories/releases
 			</url>
-			<uniqueVersion>false</uniqueVersion>
 		</repository>
 		<snapshotRepository>
-			<id>arcs.snapshot</id>
-			<name>ARCS SNAPSHOT Repository</name>
-			<url>http://code.arcs.org.au/nexus/content/repositories/snapshots
+			<id>bestgrid.snapshot2</id>
+			<name>BeSTGRID Snapshots Repository</name>
+			<url>http://er77.ceres.auckland.ac.nz/nexus/content/repositories/snapshots
 			</url>
-			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
 

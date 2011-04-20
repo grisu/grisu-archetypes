@@ -2,14 +2,13 @@ package ${groupId};
 
 import grisu.model.FileManager;
 
-import org.vpac.grisu.control.ServiceInterface;
-import org.vpac.grisu.control.exceptions.JobPropertiesException;
-import org.vpac.grisu.control.exceptions.JobSubmissionException;
-import org.vpac.grisu.frontend.control.login.LoginException;
-import org.vpac.grisu.frontend.control.login.LoginManager;
-import org.vpac.grisu.frontend.model.job.JobObject;
-
-import au.org.arcs.jcommons.constants.Constants;
+import grisu.control.ServiceInterface;
+import grisu.control.exceptions.JobPropertiesException;
+import grisu.control.exceptions.JobSubmissionException;
+import grisu.frontend.control.login.LoginManager;
+import grisu.frontend.model.job.JobObject;
+import grisu.jcommons.constants.Constants;
+import grisu.model.FileManager;
 
 public class Client {
 
@@ -31,6 +30,7 @@ public class Client {
 		job.setCommandline("cat " + filename);
 		job.addInputFileUrl(args[0]);
 		job.setWalltimeInSeconds(60);
+		job.setSubmissionLocation("route@er171.ceres.auckland.ac.nz:ng2.auckland.ac.nz");
 
 		job.setTimestampJobname("cat_job");
 

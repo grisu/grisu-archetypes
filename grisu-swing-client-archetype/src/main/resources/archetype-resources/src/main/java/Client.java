@@ -2,9 +2,11 @@ package ${groupId};
 
 import java.awt.EventQueue;
 
-import org.vpac.grisu.control.ServiceInterface;
-import org.vpac.grisu.frontend.view.swing.GrisuApplicationWindow;
-import org.vpac.grisu.frontend.view.swing.jobcreation.JobCreationPanel;
+import grisu.control.ServiceInterface;
+import grisu.frontend.view.swing.GrisuApplicationWindow;
+import grisu.frontend.view.swing.jobcreation.JobCreationPanel;
+
+import java.awt.EventQueue;
 
 public class Client extends GrisuApplicationWindow {
 
@@ -70,4 +72,5 @@ public class Client extends GrisuApplicationWindow {
 		// here you could initialize application-wide stuff which needs a
 		// serviceInterface object
 	}
+
 }
