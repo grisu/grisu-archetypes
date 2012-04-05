@@ -57,8 +57,6 @@
 	</organization>
 	<modules>
 		<module>grisu-simple-client-archetype</module>
-<!-- 		<module>grisu-swing-client-archetype</module> -->
-    <module>projectName</module>
   </modules>
 
 
