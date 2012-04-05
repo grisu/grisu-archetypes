@@ -57,7 +57,8 @@
 	</organization>
 	<modules>
 		<module>grisu-client-archetype</module>
-	</modules>
+		<module>grisu-groovy-client-archetype</module>
+  </modules>
 
 
 	<parent>
