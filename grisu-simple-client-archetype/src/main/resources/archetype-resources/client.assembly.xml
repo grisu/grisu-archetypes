@@ -21,7 +21,7 @@
 					<exclude>**/MANIFEST.MF</exclude>
 					<exclude>**/LICENSE.txt</exclude>
 					<exclude>**/NOTICE.txt</exclude>
-					<exclude>**/log4j.properties</exclude>
+					<exclude>**/logback.xml</exclude>
 				</excludes>
 			</unpackOptions>
 		</dependencySet>
@@ -30,7 +30,7 @@
 	<!--to make sure the right log4j.properties file is used -->
 	<files>
 		<file>
-			<source>src/main/resources/log4j.properties</source>
+			<source>src/main/resources/logback.xml</source>
 			<outputDirectory>/</outputDirectory>
 		</file>
 	</files>

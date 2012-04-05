@@ -13,11 +13,13 @@ import grisu.model.FileManager;
 public class Client {
 
 	public static void main(String[] args) {
+		
+		LoginManager.initGrisuClient("${artifactId}");
 
 		System.out.println("Logging in...");
 		ServiceInterface si = null;
 		try {
-			si = LoginManager.loginCommandline("BeSTGRID");
+			si = LoginManager.loginCommandline("testbed");
 		} catch (Exception e) {
 			System.err.println("Could not login: " + e.getLocalizedMessage());
 			System.exit(1);
@@ -25,12 +27,11 @@ public class Client {
 
 		System.out.println("Creating job...");
 		JobObject job = new JobObject(si);
-		job.setApplication("UnixCommands");
 		String filename = FileManager.getFilename(args[0]);
+		job.setApplication(Constants.GENERIC_APPLICATION_NAME);
 		job.setCommandline("cat " + filename);
 		job.addInputFileUrl(args[0]);
 		job.setWalltimeInSeconds(60);
-		job.setSubmissionLocation("route@er171.ceres.auckland.ac.nz:ng2.auckland.ac.nz");
 
 		job.setTimestampJobname("cat_job");
 
@@ -38,7 +39,7 @@ public class Client {
 
 		try {
 			System.out.println("Creating job on backend...");
-			job.createJob("/ARCS/BeSTGRID");
+			job.createJob("/none");
 		} catch (JobPropertiesException e) {
 			System.err.println("Could not create job: "
 					+ e.getLocalizedMessage());
