@@ -65,9 +65,9 @@
 	<parent>
 		<groupId>nz.org.nesi</groupId>
 		<artifactId>nesi</artifactId>
-		<version>0.12-SNAPSHOT</version>
+		<version>0.12</version>
 	</parent>
 	<properties>
-		<nesi.version>0.12-SNAPSHOT</nesi.version>
+		<nesi.version>0.12</nesi.version>
 	</properties>
 </project>
