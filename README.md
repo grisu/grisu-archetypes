@@ -1,7 +1,7 @@
 grisu-archetypes
 ==============
 
-This packages provides 2 maven archetypes which support developer by creating stub maven projects which can be used as a starting point when trying to develop a new grid client (using the [Grisu client library](https://github.com/grisu/grisu/wiki/Grisu-client-library)).
+This packages provides a maven archetype which support developer by creating stub maven projects which can be used as a starting point when trying to develop a new grid client (using the [Grisu client library](https://github.com/grisu/grisu/wiki/Grisu-client-library)).
 
 Prerequisites
 ---------------------
