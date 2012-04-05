@@ -5,7 +5,7 @@
     <groupId>grisu.frontend</groupId>
     <version>0.5-SNAPSHOT</version>
   </parent>
-  <artifactId>grisu-simple-client-archetype</artifactId>
+  <artifactId>grisu-client-archetype</artifactId>
   <packaging>jar</packaging>
   <name>Grisu client archetype</name>
   <description>An archetype to create a Grisu client using the (non-ui) Grisu client library.</description>

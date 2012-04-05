@@ -56,8 +56,8 @@
 		<url>http://www.nesi.org.nz</url>
 	</organization>
 	<modules>
-		<module>grisu-simple-client-archetype</module>
-  </modules>
+		<module>grisu-client-archetype</module>
+	</modules>
 
 
 	<parent>
