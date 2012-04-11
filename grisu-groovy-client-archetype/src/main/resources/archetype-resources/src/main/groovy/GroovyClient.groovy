@@ -8,10 +8,10 @@ import grisu.model.GrisuRegistryManager
 class GroovyClient {
 
 	static void main(String[] args) {
-		LoginManager.initGrisuClient('$artifactId')
+		LoginManager.initGrisuClient('${artifactId}')
 
 
-		def cli = new CliBuilder(usage:'$artifactId -g group [options] commandline')
+		def cli = new CliBuilder(usage:'${artifactId} -g group [options] commandline')
 		cli.b(longOpt:'backend', args:1, 'The backend (alias or url) to connect to (default: testbed)')
 		cli.g(longOpt:'group', args:1, 'The group used to submit the job (required)')
 		cli.f(longOpt: 'files', args:1, 'Comma seperated list of urls or paths to input files for this job')
