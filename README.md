@@ -19,6 +19,8 @@ Usage
 
 To create a new grid client project, we need to execute the maven archetype:generate goal:
 
+#### Java client stub ####
+
 For the current snapshot release of Grisu:
 
     mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.5-SNAPSHOT -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/
@@ -26,6 +28,20 @@ For the current snapshot release of Grisu:
 For the stable version of Grisu:
 
    (later)
+
+#### Groovy client stub ####
+
+For the current snapshot release of Grisu:
+
+    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-groovy-client-archetype -DarchetypeVersion=0.5-SNAPSHOT -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/
+
+For the stable version of Grisu:
+
+   (later)
+
+### Working with the (Java) client stub ###
+
+We'll be working with the java client stub here, for the groovy client have a look here (later).
 
 Use your own values for the groupId and artifactId keys.
 
