@@ -33,6 +33,9 @@ public class Client extends GrisuCliClient<ExampleCliParameters> {
 		// execute the "run" method below
 		client.run();
 
+		// exit properly
+		System.exit(0);
+
 	}
 
 	public Client(ExampleCliParameters params, String[] args) throws Exception {
