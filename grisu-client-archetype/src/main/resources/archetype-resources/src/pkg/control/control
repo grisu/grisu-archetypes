@@ -3,6 +3,6 @@ Version: VERSION_TOKEN
 Section: misc
 Priority: optional
 Architecture: all
-Depends: java-runtime,libbcprov-java
+Depends: java-runtime,nesi-meta
 Maintainer: Please Change <this@src.pkg.control.control>
 Description: Please enter description
