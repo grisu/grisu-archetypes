@@ -1,100 +1,114 @@
 package ${groupId}
 
-import grisu.frontend.control.login.LoginManager
+import grisu.frontend.control.login.LoginManagerNew;
 import grisu.frontend.model.job.JobObject
 import grisu.jcommons.constants.Constants
 import grisu.model.GrisuRegistryManager
+import grisu.control.exceptions.JobSubmissionException
+import grisu.control.exceptions.JobPropertiesException
+import grisu.control.ServiceInterface
+import grisu.frontend.view.cli.GrisuCliClient
+import grisu.model.FileManager
 
-class GroovyClient {
-
-	static void main(String[] args) {
-		LoginManager.initGrisuClient('${artifactId}')
 
 
-		def cli = new CliBuilder(usage:'${artifactId} -g group [options] commandline')
-		cli.b(longOpt:'backend', args:1, 'The backend (alias or url) to connect to (default: testbed)')
-		cli.g(longOpt:'group', args:1, 'The group used to submit the job (required)')
-		cli.f(longOpt: 'files', args:1, 'Comma seperated list of urls or paths to input files for this job')
-		cli.j(longOpt: 'jobname', args:1, 'Jobname')
-		
-		def options = cli.parse(args)
-		if (! options ) {
-			cli.usage()
-			System.exit(1)
-		}
-		// make sure a group is set
-		if (! options.g) {
-			println 'No group specified.'
-			cli.usage()
-			System.exit(1)
-		}
-		// make sure arguments exist
-		if (! options.arguments() ) {
-			println 'No commandline specified.'
-			cli.usage()
-			System.exit(1)
+class GroovyClient extends GrisuCliClient<ExampleCliParameters> {
+
+	static void main(String[] args) throws Exception{
+		// basic housekeeping
+		LoginManagerNew.initGrisuClient("${artifactId}");
+
+		// helps to parse commandline arguments, if you don't want to create
+		// your own parameter class, just use DefaultCliParameters
+		ExampleCliParameters params = new ExampleCliParameters();
+		// create the client
+		GroovyClient client = null;
+		try {
+			client = new GroovyClient(params, args);
+		} catch(Exception e) {
+			System.err.println("Could not start ${artifactId}: "
+					+ e.getLocalizedMessage());
+			System.exit(1);
 		}
 
+		// finally:
+		// execute the "run" method below
+		client.run();
 
-		def commandline = options.arguments().join(' ')
+		// exit properly
+		System.exit(0);
+	}
 
-		def backend = options.b
-		if ( ! backend ) {
-			backend = 'testbed'
-		}
-		
-		def jobname = options.j
-		if ( ! jobname ) {
-			jobname = options.arguments()[0]+'_job'
-		}
+	public GroovyClient(ExampleCliParameters params, String[] args) throws Exception {
+		super(params, args);
+	}
 
+	@Override
+	public void run() {
 
-		def si = LoginManager.loginCommandline(backend)
-		
-		// check whether the specified group exists
-		if (! si.getFqans().asSortedSet().contains(options.g) ) {
-			println 'You are not a member of group "'+options.g+'".'
-			System.exit(1)
-		}
+		String file = getCliParameters().getFile();
 
-		def fm = GrisuRegistryManager.getDefault(si).getFileManager()
-		// checking whether all input files exist
-		def files = []
-		if ( options.f ) {
-			files = options.f.split(',')
-			for ( def file : files ) {
-				if ( ! fm.fileExists(file) ) {
-					println 'Input file "'+file+'" does not exist'
-					System.exit(1)
-				}
-			}
+		System.out.println("File to use for the job: " + file);
+
+		// all login stuff is implemented in the parent class
+		System.out.println("Getting serviceinterface...");
+		ServiceInterface si = null;
+		try {
+			si = getServiceInterface();
+		} catch (Exception e) {
+			System.err.println("Could not login: " + e.getLocalizedMessage());
+			System.exit(1);
 		}
 
-		def job = new JobObject(si)
+		System.out.println("Creating job...");
+		JobObject job = new JobObject(si);
+		String filename = FileManager.getFilename(file);
+		job.setApplication(Constants.GENERIC_APPLICATION_NAME);
+		job.setCommandline("cat " + filename);
+		job.addInputFileUrl(file);
+		job.setWalltimeInSeconds(60);
 
-		job.setApplication(Constants.GENERIC_APPLICATION_NAME)
+		job.setTimestampJobname("cat_job");
 
-		// this is just to show how to access Java from within this script
-		// doesn't make any sense in context of this script
-		def echoString = ${groupId}.ExampleJavaClass.echoString
+		System.out.println("Set jobname to be: " + job.getJobname());
 
-		job.setCommandline(commandline)
+		try {
+			System.out.println("Creating job on backend...");
+			job.createJob("/nz/nesi");
+		} catch (JobPropertiesException e) {
+			System.err.println("Could not create job: "
+					+ e.getLocalizedMessage());
+			System.exit(1);
+		}
 
-		job.setTimestampJobname(jobname)
+		try {
+			System.out.println("Submitting job to the grid...");
+			job.submitJob();
+		} catch (JobSubmissionException e) {
+			System.err.println("Could not submit job: "
+					+ e.getLocalizedMessage());
+			System.exit(1);
+		} catch (InterruptedException e) {
+			System.err.println("Jobsubmission interrupted: "
+					+ e.getLocalizedMessage());
+			System.exit(1);
+		}
 
-		println 'Creating job "'+job.getJobname()+'"...'
-		job.createJob(options.g)
-		println 'Submitting job...'
-		job.submitJob()
+		System.out.println("Job submission finished.");
+		System.out.println("Job submitted to: "
+				+ job.getJobProperty(Constants.SUBMISSION_SITE_KEY));
 
-		println 'Waiting for job...'
-		job.waitForJobToFinish(5)
+		System.out.println("Waiting for job to finish...");
 
-		println 'Job finished with status: ' + job.getStatusString(false)
+		// for a realy workflow, don't check every 5 seconds since that would
+		// put too much load on the backend/gateways
+		job.waitForJobToFinish(5);
 
-		println 'Stdout: ' + job.getStdOutContent()
-		println 'Stderr: ' + job.getStdErrContent()
+		System.out.println("Job finished with status: "
+				+ job.getStatusString(false));
 
-		System.exit(0)
+		System.out.println("Stdout: " + job.getStdOutContent());
+		System.out.println("Stderr: " + job.getStdErrContent());
+
 	}
 }
