@@ -45,7 +45,7 @@ We'll be working with the java client stub here, for the groovy client have a lo
 
 Use your own values for the groupId and artifactId keys.
 
-This should give you a project directory that looks like:
+This should give you a project directory that looks something like:
 
     ./src
     ./src/pkg
