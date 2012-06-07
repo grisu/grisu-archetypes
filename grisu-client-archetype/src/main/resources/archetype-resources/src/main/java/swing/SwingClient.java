@@ -1,38 +1,26 @@
 package ${groupId}.swing;
 
-import java.awt.EventQueue;
-
 import grisu.control.ServiceInterface;
-import grisu.frontend.control.login.LoginManager;
+import grisu.frontend.control.login.LoginManagerNew;
 import grisu.frontend.view.swing.GrisuApplicationWindow;
 import grisu.frontend.view.swing.jobcreation.JobCreationPanel;
+import grisu.frontend.view.swing.utils.DefaultExceptionHandler;
+import grisu.jcommons.utils.EnvironmentVariableHelpers;
 
 import java.awt.EventQueue;
+
+
 
 public class SwingClient extends GrisuApplicationWindow {
 
-	public static void main(String[] args) {
-		
-		LoginManager.initGrisuClient("${artifactId}-swing");
-
-		// creating the UI
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-
-					GrisuApplicationWindow appWindow = new SwingClient();
-					appWindow.setVisible(true);
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(String[] args) throws Exception {
+		SwingClient app = new SwingClient();
+		app.run();
 
 	}
 
 	// pretty much everything is done for us in the superclass
-	public SwingClient() {
+	public SwingClient() throws Exception{
 		super();
 	}
 
@@ -74,6 +62,43 @@ public class SwingClient extends GrisuApplicationWindow {
 	protected void initOptionalStuff(ServiceInterface si) {
 		// here you could initialize application-wide stuff which needs a
 		// serviceInterface object
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see grith.gridsession.GridClient#run()
+	 *
+	 * This one is the main method to override.
+	 */
+	public void run() {
+
+		// housekeeping
+		LoginManagerNew.initGrisuClient("${artifactId}-swing");
+
+		LoginManagerNew.setClientVersion(grisu.jcommons.utils.Version
+				.get("this-client"));
+
+		EnvironmentVariableHelpers.loadEnvironmentVariablesToSystemProperties();
+
+		Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler());
+
+		LoginManagerNew.initEnvironment();
+
+		// creating the UI
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+
+					setVisible(true);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
 	}
 
 }

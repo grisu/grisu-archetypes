@@ -1,25 +1,56 @@
 package ${groupId};
 
-import grisu.model.FileManager;
-
 import grisu.control.ServiceInterface;
 import grisu.control.exceptions.JobPropertiesException;
 import grisu.control.exceptions.JobSubmissionException;
-import grisu.frontend.control.login.LoginManager;
+import grisu.frontend.control.login.LoginManagerNew;
 import grisu.frontend.model.job.JobObject;
+import grisu.frontend.view.cli.GrisuCliClient;
 import grisu.jcommons.constants.Constants;
 import grisu.model.FileManager;
 
-public class Client {
+public class Client extends GrisuCliClient<ExampleCliParameters> {
 
 	public static void main(String[] args) {
-		
-		LoginManager.initGrisuClient("${artifactId}");
 
-		System.out.println("Logging in...");
+		// basic housekeeping
+		LoginManagerNew.initGrisuClient("${artifactId}");
+
+		// helps to parse commandline arguments, if you don't want to create
+		// your own parameter class, just use DefaultCliParameters
+		ExampleCliParameters params = new ExampleCliParameters();
+		// create the client
+		Client client = null;
+		try {
+			client = new Client(params, args);
+		} catch(Exception e) {
+			System.err.println("Could not start ${artifactId}: "
+					+ e.getLocalizedMessage());
+			System.exit(1);
+		}
+
+		// finally:
+		// execute the "run" method below
+		client.run();
+
+	}
+
+	public Client(ExampleCliParameters params, String[] args) throws Exception {
+		super(params, args);
+	}
+
+	@Override
+	public void run() {
+
+		String file = getCliParameters().getFile();
+
+		System.out.println("File to use for the job: " + file);
+
+		// all login stuff is implemented in the parent class
+		System.out.println("Getting serviceinterface...");
 		ServiceInterface si = null;
 		try {
-			si = LoginManager.loginCommandline("testbed");
+			si = getServiceInterface();
 		} catch (Exception e) {
 			System.err.println("Could not login: " + e.getLocalizedMessage());
 			System.exit(1);
@@ -27,10 +58,10 @@ public class Client {
 
 		System.out.println("Creating job...");
 		JobObject job = new JobObject(si);
-		String filename = FileManager.getFilename(args[0]);
+		String filename = FileManager.getFilename(file);
 		job.setApplication(Constants.GENERIC_APPLICATION_NAME);
 		job.setCommandline("cat " + filename);
-		job.addInputFileUrl(args[0]);
+		job.addInputFileUrl(file);
 		job.setWalltimeInSeconds(60);
 
 		job.setTimestampJobname("cat_job");
@@ -39,7 +70,7 @@ public class Client {
 
 		try {
 			System.out.println("Creating job on backend...");
-			job.createJob("/none");
+			job.createJob("/nz/nesi");
 		} catch (JobPropertiesException e) {
 			System.err.println("Could not create job: "
 					+ e.getLocalizedMessage());
@@ -74,12 +105,6 @@ public class Client {
 
 		System.out.println("Stdout: " + job.getStdOutContent());
 		System.out.println("Stderr: " + job.getStdErrContent());
-
-		// it's good practise to shutdown the jvm properly. There might be some
-		// executors running in the background
-		// and they need to know when to shutdown.
-		// Otherwise, your application might not exit.
-		System.exit(0);
 
 	}
 

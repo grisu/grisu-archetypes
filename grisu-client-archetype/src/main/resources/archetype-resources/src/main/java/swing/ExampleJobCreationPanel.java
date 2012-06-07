@@ -187,7 +187,7 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 					// job.createJob() / job.createJob("/ARCS/BeSTGRID")
 					// or, what is recommended if you use the provided swing
 					// client library (as we do here):
-					RunningJobManager.getDefault(si).createJob(job, "/none");
+					RunningJobManager.getDefault(si).createJob(job, "/nz/nesi");
 					// this integrates better with the job management panel we
 					// are using
 
