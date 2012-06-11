@@ -1,7 +1,7 @@
 package ${groupId}.swing;
 
 import grisu.control.ServiceInterface;
-import grisu.frontend.control.login.LoginManagerNew;
+import grisu.frontend.control.login.LoginManager;
 import grisu.frontend.view.swing.GrisuApplicationWindow;
 import grisu.frontend.view.swing.jobcreation.JobCreationPanel;
 import grisu.frontend.view.swing.utils.DefaultExceptionHandler;
@@ -74,16 +74,16 @@ public class SwingClient extends GrisuApplicationWindow {
 	public void run() {
 
 		// housekeeping
-		LoginManagerNew.initGrisuClient("${artifactId}-swing");
+		LoginManager.initGrisuClient("${artifactId}-swing");
 
-		LoginManagerNew.setClientVersion(grisu.jcommons.utils.Version
+		LoginManager.setClientVersion(grisu.jcommons.utils.Version
 				.get("this-client"));
 
 		EnvironmentVariableHelpers.loadEnvironmentVariablesToSystemProperties();
 
 		Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler());
 
-		LoginManagerNew.initEnvironment();
+		LoginManager.initEnvironment();
 
 		// creating the UI
 		EventQueue.invokeLater(new Runnable() {

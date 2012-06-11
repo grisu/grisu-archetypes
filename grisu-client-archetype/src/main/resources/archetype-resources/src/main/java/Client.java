@@ -3,7 +3,7 @@ package ${groupId};
 import grisu.control.ServiceInterface;
 import grisu.control.exceptions.JobPropertiesException;
 import grisu.control.exceptions.JobSubmissionException;
-import grisu.frontend.control.login.LoginManagerNew;
+import grisu.frontend.control.login.LoginManager;
 import grisu.frontend.model.job.JobObject;
 import grisu.frontend.view.cli.GrisuCliClient;
 import grisu.jcommons.constants.Constants;
@@ -14,7 +14,7 @@ public class Client extends GrisuCliClient<ExampleCliParameters> {
 	public static void main(String[] args) {
 
 		// basic housekeeping
-		LoginManagerNew.initGrisuClient("${artifactId}");
+		LoginManager.initGrisuClient("${artifactId}");
 
 		// helps to parse commandline arguments, if you don't want to create
 		// your own parameter class, just use DefaultCliParameters
