@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -5,14 +6,14 @@
 	<artifactId>grisu-archetypes</artifactId>
 	<packaging>pom</packaging>
 	<name>grisu-archetypes</name>
-	<version>0.3.3.2-SNAPSHOT</version>
+	<version>0.5</version>
 	<description>Maven archetypes for Grisu</description>
 	<url>http://grisu.arcs.org.au</url>
 
 	<repositories>
 		<repository>
 			<id>bestgrid.public.release</id>
-			<url>http://dev.ceres.auckland.ac.nz/nexus/content/groups/public/</url>
+			<url>http://code.ceres.auckland.ac.nz/nexus/content/groups/public/</url>
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>daily</updatePolicy>
@@ -24,37 +25,7 @@
 				<checksumPolicy>fail</checksumPolicy>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>bestgrid.public.snapshot</id>
-			<url>http://dev.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/
-			</url>
-			<releases>
-				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</snapshots>
-		</repository>
 	</repositories>
-
-	<distributionManagement>
-		<repository>
-			<name>BeSTGRID Releases Repository</name>
-			<id>bestgrid.release2</id>
-			<url>http://er77.ceres.auckland.ac.nz/nexus/content/repositories/releases
-			</url>
-		</repository>
-		<snapshotRepository>
-			<id>bestgrid.snapshot2</id>
-			<name>BeSTGRID Snapshots Repository</name>
-			<url>http://er77.ceres.auckland.ac.nz/nexus/content/repositories/snapshots
-			</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 	<issueManagement>
 		<system>Github</system>
@@ -66,10 +37,9 @@
 		<developer>
 			<id>markus</id>
 			<name>Markus Binsteiner</name>
-			<email>markus.binsteiner@arcs.org.au</email>
-			<organization>ARCS</organization>
-			<organizationUrl>http://www.arcs.org.au</organizationUrl>
-			<timezone>Australia/Melbourne</timezone>
+			<email>m.binsteiner@auckland.ac.nz</email>
+			<organization>NeSI</organization>
+			<organizationUrl>http://www.nesi.org.nz</organizationUrl>
 			<roles>
 			</roles>
 		</developer>
@@ -82,16 +52,21 @@
 		<url>https://github.com/grisu/grisu-archetypes</url>
 	</scm>
 	<organization>
-		<name>BeSTGRID</name>
-		<url>http://www.bestgrid.org</url>
+		<name>NeSI</name>
+		<url>http://www.nesi.org.nz</url>
 	</organization>
-	<properties>
-		<grisu.dependency.version>0.3.3.1</grisu.dependency.version>
-	</properties>
 	<modules>
-		<module>grisu-simple-client-archetype</module>
-		<module>grisu-swing-client-archetype</module>
-	</modules>
+		<module>grisu-client-archetype</module>
+		<module>grisu-groovy-client-archetype</module>
+  </modules>
 
 
+	<parent>
+		<groupId>nz.org.nesi</groupId>
+		<artifactId>nesi</artifactId>
+		<version>0.20</version>
+	</parent>
+	<properties>
+		<nesi.version>0.20</nesi.version>
+	</properties>
 </project>
