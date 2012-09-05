@@ -6,7 +6,7 @@
 	<artifactId>grisu-archetypes</artifactId>
 	<packaging>pom</packaging>
 	<name>grisu-archetypes</name>
-	<version>0.5-SNAPSHOT</version>
+	<version>0.5-rc3-SNAPSHOT</version>
 	<description>Maven archetypes for Grisu</description>
 	<url>http://grisu.arcs.org.au</url>
 
@@ -64,9 +64,9 @@
 	<parent>
 		<groupId>nz.org.nesi</groupId>
 		<artifactId>nesi</artifactId>
-		<version>0.12</version>
+		<version>0.20</version>
 	</parent>
 	<properties>
-		<nesi.version>0.12</nesi.version>
+		<nesi.version>0.20</nesi.version>
 	</properties>
 </project>

@@ -1,6 +1,6 @@
 package ${groupId}
 
-import grisu.frontend.control.login.LoginManagerNew;
+import grisu.frontend.control.login.LoginManager
 import grisu.frontend.model.job.JobObject
 import grisu.jcommons.constants.Constants
 import grisu.model.GrisuRegistryManager
@@ -16,7 +16,7 @@ class GroovyClient extends GrisuCliClient<ExampleCliParameters> {
 
 	static void main(String[] args) throws Exception{
 		// basic housekeeping
-		LoginManagerNew.initGrisuClient("${artifactId}");
+		LoginManager.initGrisuClient("${artifactId}");
 
 		// helps to parse commandline arguments, if you don't want to create
 		// your own parameter class, just use DefaultCliParameters
