@@ -21,23 +21,16 @@ To create a new grid client project, we need to execute the maven archetype:gene
 
 #### Java client stub ####
 
-For the current snapshot release of Grisu:
+The following command creates a java client stub using Grisu version 0.5:
 
-    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.5-SNAPSHOT -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/
-
-For the stable version of Grisu:
-
-   (later)
+    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.5 -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
 
 #### Groovy client stub ####
 
-For the current snapshot release of Grisu:
+The following command creates a groovy client stub using Grisu version 0.5:
 
-    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-groovy-client-archetype -DarchetypeVersion=0.5-SNAPSHOT -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/
+    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-groovy-client-archetype -DarchetypeVersion=0.5 -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
 
-For the stable version of Grisu:
-
-   (later)
 
 ### Working with the (Java) client stub ###
 
@@ -47,6 +40,8 @@ Use your own values for the groupId and artifactId keys.
 
 This should give you a project directory that looks something like:
 
+    ./client.assembly.xml
+    ./pom.xml
     ./src
     ./src/pkg
     ./src/pkg/data
@@ -54,18 +49,18 @@ This should give you a project directory that looks something like:
     ./src/pkg/control
     ./src/pkg/control/control
     ./src/main
+    ./src/main/resources
+    ./src/main/resources/projectName.version
+    ./src/main/resources/logback.xml
     ./src/main/java
     ./src/main/java/your
     ./src/main/java/your/project
     ./src/main/java/your/project/swing
     ./src/main/java/your/project/swing/ExampleJobCreationPanel.java
     ./src/main/java/your/project/swing/SwingClient.java
+    ./src/main/java/your/project/ExampleCliParameters.java
     ./src/main/java/your/project/Client.java
-    ./src/main/resources
-    ./src/main/resources/logback.xml
-    ./src/main/resources/projectName.version
-    ./client.assembly.xml
-    ./pom.xml
+
 
     
 ### Building the project ###
