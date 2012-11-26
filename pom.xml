@@ -68,6 +68,6 @@
 	</parent>
 	<properties>
 		<nesi.version>0.23</nesi.version>
-		<grisu.version>0.5.10-SNAPSHOT</grisu.version>
+		<grisu.version>0.5.10</grisu.version>
 	</properties>
 </project>
