@@ -353,5 +353,8 @@
 	</profiles>
 
 
+	<properties>
+		<grisu.version>GRISU_VERSION</grisu.version>
+	</properties>
 </project>
 

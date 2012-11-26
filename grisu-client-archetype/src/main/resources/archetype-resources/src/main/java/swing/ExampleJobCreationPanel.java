@@ -108,7 +108,7 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 	// e.g. Java, Python, MrBayes, ....
 	@Override
 	public String getSupportedApplication() {
-		return "UnixCommands";
+		return "";
 	}
 
 	// convenience method to disable and re-enable the button while the
@@ -151,8 +151,6 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 
 					// now, let's create the job
 					JobObject job = new JobObject(si);
-					// seting the application package
-					job.setApplication(Constants.GENERIC_APPLICATION_NAME);
 					// ... and connect it to the submission log panel so the
 					// user can see that there's something going on...
 					getSubmissionLogPanel().setJobObject(job);
@@ -187,7 +185,7 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 					// job.createJob() / job.createJob("/ARCS/BeSTGRID")
 					// or, what is recommended if you use the provided swing
 					// client library (as we do here):
-					RunningJobManager.getDefault(si).createJob(job, "/nz/nesi");
+					RunningJobManager.getDefault(si).createJob(job);
 					// this integrates better with the job management panel we
 					// are using
 

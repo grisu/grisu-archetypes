@@ -51,11 +51,6 @@
 <!-- 			<scope>compile</scope> -->
 <!-- 		</dependency> -->
 
-		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
-			<version>1.8.0</version>
-		</dependency>
 
 		<!-- we can't include the bouncy castle library in our assembled binary 
 			so it has to put in the classpath in some other way. You could either have 
