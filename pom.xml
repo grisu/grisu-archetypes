@@ -6,7 +6,7 @@
 	<artifactId>grisu-archetypes</artifactId>
 	<packaging>pom</packaging>
 	<name>grisu-archetypes</name>
-	<version>0.5.9</version>
+	<version>0.5.10-SNAPSHOT</version>
 	<description>Maven archetypes for Grisu</description>
 	<url>http://grisu.arcs.org.au</url>
 
