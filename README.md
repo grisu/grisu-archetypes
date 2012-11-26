@@ -19,6 +19,7 @@ Usage
 
 To create a new grid client project, we need to execute the maven archetype:generate goal:
 
+#### Java client stub ####
 
     mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.5.9 -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
 
