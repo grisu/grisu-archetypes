@@ -78,7 +78,11 @@ This example also builds a very simple example Swing client which submits a "ech
 	
 Make sure you selected the 'testbed' backend in the "Advanced connection settings".
 
+This is how the example job submission panel looks like:
+
 ![ScreenShot](https://raw.github.com/grisu/grisu-archetypes/develop/resources/swing_client_1.png)
+
+And this is the job monitoring panel you get for free with this archetype:
 
 ![ScreenShot](https://raw.github.com/grisu/grisu-archetypes/develop/resources/swing_client_2.png)
 
