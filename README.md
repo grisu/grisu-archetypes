@@ -78,6 +78,11 @@ This example also builds a very simple example Swing client which submits a "ech
 	
 Make sure you selected the 'testbed' backend in the "Advanced connection settings".
 
+![ScreenShot](https://raw.github.com/grisu/grisu-archetypes/develop/resources/swing_client_1.jpg)
+
+![ScreenShot](https://raw.github.com/grisu/grisu-archetypes/develop/resources/swing_client_2.jpg)
+
+
 To see what's going on behind the scene (for both of those cases), you can tail the log file that's written to $HOME/.grisu/projectName.debug
 
 ### Building rpm & deb packages
