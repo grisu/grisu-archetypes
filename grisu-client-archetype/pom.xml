@@ -62,7 +62,4 @@
 		</plugins>
 	</build>
 
-	<properties>
-		<grisu.version>0.5.10-SNAPSHOT</grisu.version>
-	</properties>
 </project>
