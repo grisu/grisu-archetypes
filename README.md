@@ -77,13 +77,15 @@ should give us those two artifacts (for the commandline version) in the `target`
     
 ### Running the client ###
 
-    java -jar target/projectName-binary.jar <some_input_text_file>
+    java -jar target/projectName-binary.jar -b testbed -f examples/testfile.txt
     
 This should create and submit a simple "cat" job to the NeSI testbed grid that uses the specified input file, uploads it to the grid and then prints out its content. Have a look in the Client.java class under src/main/java/your/project/ to see how that's done.
 
 This example also builds a very simple example Swing client which submits a "echo hello world" job after the user presses a button. Try it out using:
 
     java -cp target/projectName-binary.jar your.project.swing.SwingClient
+	
+Make sure you selected the 'testbed' backend in the "Advanced connection settings".
 
 To see what's going on behind the scene (for both of those cases), you can tail the log file that's written to $HOME/.grisu/projectName.debug
 

@@ -62,7 +62,6 @@ public class Client extends GrisuCliClient<ExampleCliParameters> {
 		System.out.println("Creating job...");
 		JobObject job = new JobObject(si);
 		String filename = FileManager.getFilename(file);
-		job.setApplication(Constants.GENERIC_APPLICATION_NAME);
 		job.setCommandline("cat " + filename);
 		job.addInputFileUrl(file);
 		job.setWalltimeInSeconds(60);
@@ -73,7 +72,7 @@ public class Client extends GrisuCliClient<ExampleCliParameters> {
 
 		try {
 			System.out.println("Creating job on backend...");
-			job.createJob("/nz/nesi");
+			job.createJob();
 		} catch (JobPropertiesException e) {
 			System.err.println("Could not create job: "
 					+ e.getLocalizedMessage());

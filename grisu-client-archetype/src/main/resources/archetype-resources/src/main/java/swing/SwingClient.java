@@ -23,6 +23,11 @@ public class SwingClient extends GrisuApplicationWindow {
 	public SwingClient() throws Exception{
 		super();
 	}
+	
+	@Override
+	public boolean displayAllJobsMonitoringItem() {
+		return true;
+	}
 
 	@Override
 	public boolean displayAppSpecificMonitoringItems() {

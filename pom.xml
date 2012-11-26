@@ -64,9 +64,10 @@
 	<parent>
 		<groupId>nz.org.nesi</groupId>
 		<artifactId>nesi</artifactId>
-		<version>0.20</version>
+		<version>0.23</version>
 	</parent>
 	<properties>
-		<nesi.version>0.20</nesi.version>
+		<nesi.version>0.23</nesi.version>
+		<grisu.dependency.version>0.5.10-SNAPSHOT</grisu.dependency.version>
 	</properties>
 </project>

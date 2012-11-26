@@ -15,6 +15,9 @@
     <fileSet filtered="true" packaged="false">
     	<directory>src/pkg</directory>
     </fileSet>
+    <fileSet filtered="false" packaged="false">
+    	<directory>examples</directory>
+    </fileSet>
     
     <fileSet filtered="false">
     	<directory></directory>
