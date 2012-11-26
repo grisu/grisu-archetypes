@@ -20,7 +20,7 @@ Usage
 To create a new grid client project, we need to execute the maven archetype:generate goal:
 
 
-    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.6-SNAPSHOT -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
+    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.5.9 -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
 
 
 ### Working with the (Java) client stub 
@@ -181,7 +181,7 @@ For reference, here are all imports you might need when changing the code:
 
 The following command creates a groovy client stub using Grisu version 0.5:
 
-    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-groovy-client-archetype -DarchetypeVersion=0.6-SNAPSHOT -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
+    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-groovy-client-archetype -DarchetypeVersion=0.5.9 -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
 
 The rest works pretty much as the pure Java project above.
 
