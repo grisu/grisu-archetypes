@@ -59,6 +59,23 @@
 		<module>grisu-client-archetype</module>
 		<module>grisu-groovy-client-archetype</module>
   </modules>
+  
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.2</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<pushChanges>true</pushChanges>
+					<localCheckout>true</localCheckout>
+					<tagNameFormat>@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>	
+
+		</plugins>
+	</build>  
 
 
 	<parent>
