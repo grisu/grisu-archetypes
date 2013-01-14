@@ -21,7 +21,7 @@ To create a new grid client project, we need to execute the maven archetype:gene
 
 #### Java client stub ####
 
-    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.5.9 -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
+    mvn archetype:generate -DarchetypeGroupId=grisu.frontend -DarchetypeArtifactId=grisu-client-archetype -DarchetypeVersion=0.5.14 -DgroupId=your.project -DartifactId=projectName -DarchetypeRepository=http://code.ceres.auckland.ac.nz/nexus/content/groups/public
 
 
 ### Working with the (Java) client stub 
@@ -69,7 +69,7 @@ should give us those two artifacts (for the commandline version) in the `target`
     
 ### Running the client
 
-    java -jar target/projectName-binary.jar -b testbed -f examples/testfile.txt
+    java -cp target/projectName-binary.jar your.project.Client -b testbed -f examples/testfile.txt
     
 This should create and submit a simple "cat" job to the NeSI testbed grid that uses the specified input file, uploads it to the grid and then prints out its content. Have a look in the Client.java class under src/main/java/your/project/ to see how that's done.
 
