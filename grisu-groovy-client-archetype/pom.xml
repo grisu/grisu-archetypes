@@ -3,7 +3,7 @@
   <parent>
     <artifactId>grisu-archetypes</artifactId>
     <groupId>grisu.frontend</groupId>
-    <version>0.5.14-SNAPSHOT</version>
+    <version>0.5.14</version>
   </parent>
   <artifactId>grisu-groovy-client-archetype</artifactId>
   <packaging>jar</packaging>
