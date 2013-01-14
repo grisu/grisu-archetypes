@@ -134,7 +134,7 @@
 							<archive>
 								<index>true</index>
 								<manifest>
-									<mainClass>${groupId}.Client</mainClass>
+									<mainClass>${groupId}.swing.SwingClient</mainClass>
 								</manifest>
 								<manifestEntries>
 									<Class-Path>bcprov.jar local-backend-dev.jar local-backend.jar</Class-Path>
@@ -160,7 +160,7 @@
 				<dependency>
 					<groupId>bouncycastle</groupId>
 					<artifactId>bcprov-jdk15</artifactId>
-					<version>140</version>
+					<version>145</version>
 					<scope>compile</scope>
 				</dependency>
 			</dependencies>
@@ -267,7 +267,28 @@
 												<filemode>755</filemode>
 											</mapper>
 										</data>															
-
+										<data>
+											<src>${project.basedir}/src/pkg/data/${artifactId}.desktop</src>
+											<type>file</type>
+											<mapper>
+												<type>perm</type>
+												<prefix>/usr/share/applications/</prefix>
+												<user>root</user>
+												<group>root</group>
+												<filemode>755</filemode>
+											</mapper>
+										</data>
+										<data>
+											<src>${project.basedir}/src/pkg/data/${artifactId}.png</src>
+											<type>file</type>
+											<mapper>
+												<type>perm</type>
+												<prefix>/usr/local/lib/grisu/icons/</prefix>
+												<user>root</user>
+												<group>root</group>
+												<filemode>755</filemode>
+											</mapper>
+										</data>
 									</dataSet>
 
 								</configuration>
@@ -329,7 +350,30 @@
 										</source>
 									</sources>
 								</mapping>
-
+								<mapping>
+									<directory>/usr/share/applications/</directory>
+									<documentation>false</documentation>
+									<filemode>755</filemode>
+									<username>root</username>
+									<groupname>root</groupname>
+									<sources>
+										<source>
+											<location>src/pkg/data/${artifactId}.desktop</location>
+										</source>
+									</sources>
+								</mapping>
+								<mapping>
+									<directory>/usr/local/lib/grisu/icons/</directory>
+									<documentation>false</documentation>
+									<filemode>755</filemode>
+									<username>root</username>
+									<groupname>root</groupname>
+									<sources>
+										<source>
+											<location>src/pkg/data/${artifactId}.png</location>
+										</source>
+									</sources>
+								</mapping>
 							</mappings>
 							<requires>
 								<require>nesi</require>

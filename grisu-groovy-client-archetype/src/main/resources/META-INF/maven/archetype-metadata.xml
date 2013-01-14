@@ -30,6 +30,15 @@
     
     <fileSet filtered="true" packaged="false">
     	<directory>src/pkg</directory>
+    	<excludes>
+    		<exclude>**/*.png</exclude>
+    	</excludes>
+    </fileSet>
+    <fileSet filtered="false" packaged="false">
+    	<directory>src/pkg</directory>
+    	<includes>
+    		<include>**/*.png</include>
+    	</includes>
     </fileSet>
     
     <fileSet filtered="false" packaged="false">

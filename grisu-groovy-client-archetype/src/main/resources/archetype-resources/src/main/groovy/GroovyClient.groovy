@@ -73,6 +73,11 @@ class GroovyClient extends GrisuCliClient<ExampleCliParameters> {
 
 		try {
 			System.out.println("Creating job on backend...");
+			String[] fqans = GrisuRegistryManager.getDefault(si).getUserEnvironmentManager().getAllAvailableFqans(true);
+			if (fqans == null || fqans.length == 0) {
+				System.err.println("No group available.");
+			}
+			System.out.println("Using group to submit the testjob: "+fqans[0]);
 			job.createJob();
 		} catch (JobPropertiesException e) {
 			System.err.println("Could not create job: "

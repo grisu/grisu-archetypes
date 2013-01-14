@@ -6,6 +6,7 @@ import grisu.frontend.model.job.JobObject;
 import grisu.frontend.view.swing.jobcreation.JobCreationPanel;
 import grisu.frontend.view.swing.jobcreation.widgets.SubmissionLogPanel;
 import grisu.jcommons.constants.Constants;
+import grisu.model.GrisuRegistryManager;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -185,7 +186,13 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 					// job.createJob() / job.createJob("/ARCS/BeSTGRID")
 					// or, what is recommended if you use the provided swing
 					// client library (as we do here):
-					RunningJobManager.getDefault(si).createJob(job);
+					String[] fqans = GrisuRegistryManager.getDefault(si).getUserEnvironmentManager().getAllAvailableFqans(true);
+					if (fqans == null || fqans.length == 0) {
+						System.err.println("No group available.");
+					}
+					System.out.println("Using group to submit the testjob: "+fqans[0]);
+
+					RunningJobManager.getDefault(si).createJob(job, fqans[0]);
 					// this integrates better with the job management panel we
 					// are using
 
