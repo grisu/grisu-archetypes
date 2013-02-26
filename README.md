@@ -118,7 +118,7 @@ In the following, you have to edit the file src/main/java/your/project/Client.ja
 
 #### Changing the application (to diff) ####
 
-Since we need the user to specify 2 text files, we parse the commandline arguments with which the job was started and assume they are urls to the two input files. Then we change the part of the code that creates the JobObject like this:
+Since we need the user to specify 2 text files, we parse the commandline arguments with which the job was started and assume they are urls to the two input files. Then we change the part of the code that creates the GrisuJob like this:
 
     String file1url = args[0];
     String file1Name = FileManager.getFilename(file1url);
@@ -126,7 +126,7 @@ Since we need the user to specify 2 text files, we parse the commandline argumen
     String file2Name = FileManager.getFilename(file2url);
 
     System.out.println("Creating job...");
-    JobObject job = new JobObject(si);
+    GrisuJob job = new GrisuJob(si);
     job.setApplication(Constants.GENERIC_APPLICATION_NAME);
     job.setCommandline("diff " + file1Name + " " + file2Name);
     job.setWalltimeInSeconds(60);
@@ -166,7 +166,7 @@ For reference, here are all imports you might need when changing the code:
     import grisu.control.exceptions.JobPropertiesException;
     import grisu.control.exceptions.JobSubmissionException;
     import grisu.frontend.control.login.LoginManager;
-    import grisu.frontend.model.job.JobObject;
+    import grisu.frontend.model.job.GrisuJob;
     import grisu.jcommons.constants.Constants;
     import grisu.jcommons.view.cli.CliHelpers;
     import grisu.model.FileManager;

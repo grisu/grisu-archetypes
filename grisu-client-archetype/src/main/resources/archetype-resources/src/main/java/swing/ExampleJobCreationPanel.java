@@ -2,7 +2,7 @@ package ${groupId}.swing;
 
 import grisu.control.ServiceInterface;
 import grisu.frontend.control.jobMonitoring.RunningJobManager;
-import grisu.frontend.model.job.JobObject;
+import grisu.frontend.model.job.GrisuJob;
 import grisu.frontend.view.swing.jobcreation.JobCreationPanel;
 import grisu.frontend.view.swing.jobcreation.widgets.SubmissionLogPanel;
 import grisu.jcommons.constants.Constants;
@@ -28,7 +28,7 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 	private JLabel lblDummyJobSubmission;
 	// the button to submit a job
 	private JButton btnSubmit;
-	// a ready-made widget that, once connected to a JobObject, tracks the
+	// a ready-made widget that, once connected to a GrisuJob, tracks the
 	// progress of a job submission...
 	private SubmissionLogPanel submissionLogPanel;
 
@@ -151,7 +151,7 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 					lockUI(true);
 
 					// now, let's create the job
-					JobObject job = new JobObject(si);
+					GrisuJob job = new GrisuJob(si);
 					// ... and connect it to the submission log panel so the
 					// user can see that there's something going on...
 					getSubmissionLogPanel().setJobObject(job);

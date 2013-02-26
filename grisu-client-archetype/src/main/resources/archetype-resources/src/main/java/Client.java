@@ -4,7 +4,7 @@ import grisu.control.ServiceInterface;
 import grisu.control.exceptions.JobPropertiesException;
 import grisu.control.exceptions.JobSubmissionException;
 import grisu.frontend.control.login.LoginManager;
-import grisu.frontend.model.job.JobObject;
+import grisu.frontend.model.job.GrisuJob;
 import grisu.frontend.view.cli.GrisuCliClient;
 import grisu.jcommons.constants.Constants;
 import grisu.model.FileManager;
@@ -61,7 +61,7 @@ public class Client extends GrisuCliClient<ExampleCliParameters> {
 		}
 
 		System.out.println("Creating job...");
-		JobObject job = new JobObject(si);
+		GrisuJob job = new GrisuJob(si);
 		String filename = FileManager.getFilename(file);
 		job.setCommandline("cat " + filename);
 		job.addInputFileUrl(file);

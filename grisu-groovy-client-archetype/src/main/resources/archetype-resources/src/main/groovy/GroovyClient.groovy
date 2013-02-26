@@ -1,7 +1,7 @@
 package ${groupId}
 
 import grisu.frontend.control.login.LoginManager
-import grisu.frontend.model.job.JobObject
+import grisu.frontend.model.job.GrisuJob
 import grisu.jcommons.constants.Constants
 import grisu.model.GrisuRegistryManager
 import grisu.control.exceptions.JobSubmissionException
@@ -61,7 +61,7 @@ class GroovyClient extends GrisuCliClient<ExampleCliParameters> {
 		}
 
 		System.out.println("Creating job...");
-		JobObject job = new JobObject(si);
+		GrisuJob job = new GrisuJob(si);
 		String filename = FileManager.getFilename(file);
 		job.setCommandline("cat " + filename);
 		job.addInputFileUrl(file);
