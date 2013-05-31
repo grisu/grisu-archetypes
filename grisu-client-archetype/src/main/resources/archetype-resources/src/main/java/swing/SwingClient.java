@@ -6,6 +6,7 @@ import grisu.frontend.view.swing.GrisuApplicationWindow;
 import grisu.frontend.view.swing.jobcreation.JobCreationPanel;
 import grisu.frontend.view.swing.utils.DefaultExceptionHandler;
 import grisu.jcommons.utils.EnvironmentVariableHelpers;
+import grith.jgrith.Environment;
 
 import java.awt.EventQueue;
 
@@ -84,11 +85,9 @@ public class SwingClient extends GrisuApplicationWindow {
 		LoginManager.setClientVersion(grisu.jcommons.utils.Version
 				.get("this-client"));
 
-		EnvironmentVariableHelpers.loadEnvironmentVariablesToSystemProperties();
-
 		Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler());
 
-		LoginManager.initEnvironment();
+		Environment.initEnvironment();
 
 		// creating the UI
 		EventQueue.invokeLater(new Runnable() {
