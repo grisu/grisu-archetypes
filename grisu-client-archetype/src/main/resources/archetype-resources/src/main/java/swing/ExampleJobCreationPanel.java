@@ -1,7 +1,7 @@
 package ${groupId}.swing;
 
 import grisu.control.ServiceInterface;
-import grisu.frontend.control.jobMonitoring.RunningJobManager;
+import grisu.frontend.control.jobMonitoring.RunningJobManagerImpl;
 import grisu.frontend.model.job.GrisuJob;
 import grisu.frontend.view.swing.jobcreation.JobCreationPanel;
 import grisu.frontend.view.swing.jobcreation.widgets.SubmissionLogPanel;
@@ -192,7 +192,7 @@ public class ExampleJobCreationPanel extends JPanel implements JobCreationPanel 
 					}
 					System.out.println("Using group to submit the testjob: "+fqans[0]);
 
-					RunningJobManager.getDefault(si).createJob(job, fqans[0]);
+					RunningJobManagerImpl.getDefault(si).createJob(job, fqans[0]);
 					// this integrates better with the job management panel we
 					// are using
 

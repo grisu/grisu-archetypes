@@ -6,7 +6,7 @@
 	<artifactId>grisu-archetypes</artifactId>
 	<packaging>pom</packaging>
 	<name>grisu-archetypes</name>
-	<version>0.8-SNAPSHOT</version>
+	<version>0.7.7-SNAPSHOT</version>
 	<description>Maven archetypes for Grisu</description>
 	<url>http://grisu.arcs.org.au</url>
 
@@ -60,7 +60,7 @@
 		<module>grisu-client-archetype</module>
 		<module>grisu-groovy-client-archetype</module>
   </modules>
-  
+
 	<build>
 		<plugins>
 			<plugin>
@@ -73,10 +73,10 @@
 					<localCheckout>true</localCheckout>
 					<tagNameFormat>@{project.version}</tagNameFormat>
 				</configuration>
-			</plugin>	
+			</plugin>
 
 		</plugins>
-	</build>  
+	</build>
 
 
 	<parent>
@@ -86,6 +86,6 @@
 	</parent>
 	<properties>
 		<nesi.version>1.0</nesi.version>
-		<grisu.version>0.7</grisu.version>
+		<grisu.version>0.7.7</grisu.version>
 	</properties>
 </project>
