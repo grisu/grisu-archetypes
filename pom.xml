@@ -6,7 +6,7 @@
 	<artifactId>grisu-archetypes</artifactId>
 	<packaging>pom</packaging>
 	<name>grisu-archetypes</name>
-	<version>0.7.7-SNAPSHOT</version>
+	<version>0.7.9-SNAPSHOT</version>
 	<description>Maven archetypes for Grisu</description>
 	<url>http://grisu.arcs.org.au</url>
 
@@ -86,6 +86,6 @@
 	</parent>
 	<properties>
 		<nesi.version>1.0</nesi.version>
-		<grisu.version>0.7.7</grisu.version>
+		<grisu.version>0.7.9</grisu.version>
 	</properties>
 </project>
