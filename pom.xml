@@ -6,7 +6,7 @@
 	<artifactId>grisu-archetypes</artifactId>
 	<packaging>pom</packaging>
 	<name>grisu-archetypes</name>
-	<version>0.7.9</version>
+	<version>0.8</version>
 	<description>Maven archetypes for Grisu</description>
 	<url>http://grisu.arcs.org.au</url>
 
@@ -50,7 +50,7 @@
 		<developerConnection>scm:git:git@github.com:grisu/grisu-archetypes.git
 		</developerConnection>
 		<url>https://github.com/grisu/grisu-archetypes</url>
-	  <tag>0.7.9</tag>
+	  <tag>0.8</tag>
   </scm>
 	<organization>
 		<name>NeSI</name>
@@ -86,6 +86,6 @@
 	</parent>
 	<properties>
 		<nesi.version>1.0</nesi.version>
-		<grisu.version>0.7.9</grisu.version>
+		<grisu.version>0.8</grisu.version>
 	</properties>
 </project>
